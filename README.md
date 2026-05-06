@@ -28,4 +28,4 @@ https://petstore.swagger.io/
 ## Key findings
 - API returns 404 for non-existing IDs
 - API returns 405 for incorrect HTTP method
-- API does not strictly validate ID type
+- API returns 500 for invalid ID type 
