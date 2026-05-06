@@ -1,18 +1,18 @@
 # Bug Reports
 
-## Bug 1: API does not validate ID type
+## Bug: Server returns 500 for invalid ID type
 
 ### Description
-API accepts non-numeric ID and returns 404 instead of validation error.
+API does not properly validate ID type and crashes when a string value is provided.
 
 ### Steps to Reproduce
-1. Send GET request to /pet/abc
+1. Send POST /pet with "id": "abc"
 
 ### Expected Result
-400 Bad Request (invalid ID type)
+400 Bad Request 
 
 ### Actual Result
-404 Not Found
+500 Internal Server Error
 
 ### Severity
 Medium
