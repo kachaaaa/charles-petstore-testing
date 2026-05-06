@@ -1,31 +1,57 @@
-# Charles Proxy API Testing (Petstore)
+# Charles Proxy API Testing (Swagger Petstore)
 
-## Project Description
+## 📌 Project Description
 This project demonstrates API testing using Charles Proxy.
 
-The goal is to intercept, analyze, and modify HTTP requests and observe server responses.
+The goal was to intercept, analyze, and modify HTTP/HTTPS requests and verify server behavior.
 
 Tested API:
 https://petstore.swagger.io/
 
-## Tools
+---
+
+##  Tools
 - Charles Proxy
 - REST API
 - Mobile browser
 
-## What was tested
+---
+
+##  What was tested
 - GET /pet/{petId}
-- Request/Response structure
+- POST /pet (data validation)
+- Request and response structure
 - Status codes
 - Input validation
 
-## Techniques used
+---
+
+##  Techniques used
 - Traffic interception
 - Breakpoints
-- Request modification
-- Replay
+- Request modification (URL and body)
+- Response analysis
 
-## Key findings
-- API returns 404 for non-existing IDs
-- API returns 405 for incorrect HTTP method
-- API returns 500 for invalid ID type 
+---
+
+##  Test scenarios
+- Valid request → 200 OK
+- Non-existing ID → 404 Not Found
+- Invalid endpoint usage → 405 Method Not Allowed
+- Invalid data type → negative testing
+
+---
+
+##  Key finding
+- Server returns **500 Internal Server Error** when invalid ID type is provided (`"id": "abc"`)
+
+Expected:
+400 Bad Request (invalid data type)
+
+Actual:
+500 Internal Server Error
+
+---
+
+##  Conclusion
+The API handles basic scenarios correctly but lacks proper validation for input data types, which may lead to server errors.
